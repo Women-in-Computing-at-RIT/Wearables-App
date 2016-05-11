@@ -18,16 +18,21 @@ allprojects {
     ext {
         guavaVersion = '19.0'
         streamVersion = '1.0.9'
+        loggerVersion = '1.12'
+        aboutLibsVersion = '5.6.5'
+        gattLibVersion = '1.7'
+        androidChartVersion = 'v2.2.4'
+        jodaVersion = '2.9.3'
     }
 
     repositories {
         jcenter()
         mavenCentral()
+        mavenLocal()
+
+        maven { url "https://jitpack.io" }
     }
 
-    dependencies {
-
-    }
 }
 
 task clean(type: Delete) {
