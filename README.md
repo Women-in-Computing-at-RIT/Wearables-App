@@ -1,2 +1,2 @@
-## Women in Computer - Stress Monitor App
+## [Women in Computing @ RIT](wic.rit.edu) - Stress Monitor App
 ---
