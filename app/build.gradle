@@ -4,6 +4,11 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     defaultConfig {
         applicationId "edu.rit.wic.stressmonitor"
         minSdkVersion 19
@@ -19,12 +24,20 @@ android {
     }
 }
 
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+
 dependencies {
-    apply plugin: 'com.android.application'
-    apply plugin: 'me.tatarka.retrolambda'
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile "com.google.guava:guava:$guavaVersion"
     compile "com.annimon:stream:$streamVersion"
+    compile "com.github.orhanobut:logger:$loggerVersion"
+    compile("com.mikepenz:aboutlibraries:$aboutLibsVersion@aar") {
+        transitive = true
+    }
+    compile "com.github.movisens:SmartGattLib:$gattLibVersion"
+    compile "com.github.PhilJay:MPAndroidChart:$androidChartVersion"
+    compile "joda-time:joda-time:$jodaVersion"
 }

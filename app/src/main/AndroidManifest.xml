@@ -18,6 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".bluefruit.BluefruitScanActivity">
+        </activity>
+        <activity android:name=".TelemetryActivity">
+        </activity>
+        <service android:name=".bluefruit.BluefruitService">
+        </service>
     </application>
 
 </manifest>
