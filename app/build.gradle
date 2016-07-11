@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 24
     buildToolsVersion "23.0.3"
 
     compileOptions {
@@ -12,7 +12,7 @@ android {
     defaultConfig {
         applicationId "edu.rit.wic.stressmonitor"
         minSdkVersion 19
-        targetSdkVersion 23
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
     }
@@ -34,7 +34,6 @@ apply plugin: 'com.neenbedankt.android-apt'
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.4.0'
     compile "com.google.guava:guava:$guavaVersion"
     compile "com.annimon:stream:$streamVersion"
     compile "com.github.orhanobut:logger:$loggerVersion"
@@ -46,13 +45,16 @@ dependencies {
     compile "joda-time:joda-time:$jodaVersion"
 
     // requery dependencies
-    compile 'io.requery:requery:1.0.0-beta23'
-    compile 'io.requery:requery-android:1.0.0-beta23' // for android
+    // for android
     apt 'io.requery:requery-processor:1.0.0-beta23'   // use an APT plugin
     provided 'io.requery:requery-processor:1.0-SNAPSHOT'
+    compile 'com.android.support:appcompat-v7:24.0.0'
+    compile 'io.requery:requery:1.0.0-beta23'
+    compile 'io.requery:requery-android:1.0.0-beta23'
     compile 'net.zetetic:android-database-sqlcipher:3.4.0'
     compile 'io.requery:sqlite-android:3.13.0-2'
-    compile 'com.android.support:recyclerview-v7:23.4.0'
+    compile 'com.android.support:recyclerview-v7:24.0.0'
     compile 'io.reactivex:rxjava:1.1.5'
     compile 'io.reactivex:rxandroid:1.1.0'
+    compile 'com.android.support:design:24.0.0'
 }
