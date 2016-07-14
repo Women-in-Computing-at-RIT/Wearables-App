@@ -66,8 +66,9 @@
             android:text="@string/register_btn_label" />
 
         <TextView android:id="@+id/link_login"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:padding="10dp"
             android:textAlignment="center"
             android:text="@string/link_login_label" />
