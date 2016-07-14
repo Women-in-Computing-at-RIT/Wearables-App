@@ -12,11 +12,16 @@ import android.widget.Toast;
 
 import butterknife.ButterKnife;
 import butterknife.Bind;
+import io.requery.Persistable;
+import io.requery.rx.SingleEntityStore;
 
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_REGISTER = 0;
+    private static final int REQUEST_FORGOT = 0;
+
+    private SingleEntityStore<Persistable> data;
 
     @Bind(R.id.input_email) EditText _emailText;
     @Bind(R.id.input_password) EditText _passwordText;
@@ -35,7 +40,8 @@ public class LoginActivity extends AppCompatActivity {
         _registerLink.setOnClickListener((v) ->
                 startActivityForResult(new Intent(getApplicationContext(), RegisterActivity.class), REQUEST_REGISTER));
 
-//        _forgotPasswordLink.setOnClickListener((v) -> startActivity(this, ));
+        _forgotPasswordLink.setOnClickListener((v) ->
+                startActivityForResult(new Intent(getApplicationContext(), ForgotPasswordActivity.class), REQUEST_FORGOT));
     }
 
     public void login() {
@@ -74,12 +80,6 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        // Disable going back to the MainActivity
-        moveTaskToBack(true);
-    }
-
     public void onLoginSuccess() {
         _loginButton.setEnabled(true);
         finish();
@@ -93,7 +93,6 @@ public class LoginActivity extends AppCompatActivity {
 
     public boolean validateFields() {
         boolean valid = true;
-
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
 
