@@ -22,10 +22,13 @@
     <string name="forgot_password_label">Forgot Password?</string>
     <string name="link_login_label">Already Registered? Login</string>
     <string name="link_register_label">Not a member? Register</string>
+    <string name="link_forgot_login_label">Return to Login</string>
+    <string name="forgot_password_instr">Please enter your email address \n
+        to reset your password</string>
 
     <!--Button Labels-->
     <string name="login_btn_label">Login</string>
     <string name="register_btn_label">Register</string>
-    <string name="title_activity_sign_in">Sign in</string>
+    <string name="forgot_password_btn_label">Send</string>
 
 </resources>
