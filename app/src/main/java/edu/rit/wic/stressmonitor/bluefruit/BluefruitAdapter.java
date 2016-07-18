@@ -14,7 +14,7 @@ public class BluefruitAdapter {
     private final BluetoothAdapter adapter;
     private boolean scanning = false;
 
-    private Handler handler = new Handler();    // On main looper
+    private Handler handler = new Handler();    // On bt_menu looper
 
     public BluefruitAdapter(BluetoothAdapter adapter) {
         this.adapter = adapter;

@@ -59,7 +59,7 @@ public class BluefruitScanActivity extends ListActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.bt_menu, menu);
         MenuItem stop, scan, refresh;
 
         stop = menu.findItem(R.id.menu_stop);
