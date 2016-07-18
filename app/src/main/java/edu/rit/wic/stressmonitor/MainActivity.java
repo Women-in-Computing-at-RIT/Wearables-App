@@ -1,48 +1,43 @@
 package edu.rit.wic.stressmonitor;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Button;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+import android.view.View;
 
-import com.orhanobut.logger.Logger;
-import edu.rit.wic.stressmonitor.bluefruit.BluefruitScanActivity;
 
 public class MainActivity extends AppCompatActivity {
-
-    Button startButton;
-    Button loginButton;
-    Button registerButton;
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
-        loginButton = (Button) findViewById(R.id.btn_go_login);
-        registerButton = (Button) findViewById(R.id.btn_go_register);
-//        startButton = (Button) findViewById(R.id.button_start_scan);
+        Toolbar menu = (Toolbar) findViewById(R.id.menu_bar);
+        setSupportActionBar(menu);
 
-        Logger.init("WiC");
-
-        Logger.i(String.valueOf(getApplicationInfo().name) + " Initialized!");
-        Thread.setDefaultUncaughtExceptionHandler((t, ex) -> {
-            ex.printStackTrace();
-            Logger.e(ex, "Unhandled Exception");
-        });
+//        If connected to device via Bluetooth
+        findViewById(R.id.link_connected_devices).setVisibility(View.VISIBLE);
+        findViewById(R.id.bt_icon_green).setVisibility(View.VISIBLE);
+        findViewById(R.id.link_disconnected_devices).setVisibility(View.INVISIBLE);
+        findViewById(R.id.bt_icon_gray).setVisibility(View.INVISIBLE);
     }
 
     @Override
-    protected void onPostResume() {
-//        startButton.setOnClickListener(
-//                (v) -> startActivity(new Intent(MainActivity.this, BluefruitScanActivity.class))
-//        );
-        loginButton.setOnClickListener(
-                (v) -> startActivity(new Intent(MainActivity.this, LoginActivity.class))
-        );
-        registerButton.setOnClickListener(
-                (v) -> startActivity(new Intent(this, RegisterActivity.class))
-        );
-        super.onPostResume();
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                // User chose the "Settings" item, show the app settings UI...
+                return true;
+
+            case R.id.action_favorite:
+                // User chose the "Favorite" action, mark the current item
+                // as a favorite...
+                return true;
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
     }
 }
