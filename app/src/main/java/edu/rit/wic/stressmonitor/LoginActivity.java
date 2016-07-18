@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import butterknife.ButterKnife;
 import butterknife.Bind;
+import edu.rit.wic.stressmonitor.bluefruit.BluefruitScanActivity;
 import io.requery.Persistable;
 import io.requery.rx.SingleEntityStore;
 
@@ -82,12 +83,12 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onLoginSuccess() {
         _loginButton.setEnabled(true);
+
         finish();
     }
 
     public void onLoginFailed() {
         Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
-
         _loginButton.setEnabled(true);
     }
 

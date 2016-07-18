@@ -22,7 +22,7 @@
             android:layout_height="match_parent">
 
             <ImageView android:id="@+id/bt_icon_green"
-                android:src="@drawable/BT_connected_green"
+                android:src="@drawable/bt_connected_green"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="75dp"/>
@@ -38,7 +38,7 @@
                 android:layout_gravity="center_horizontal" />
 
             <ImageView android:id="@+id/bt_icon_gray"
-                android:src="@drawable/BT_disconnected_gray"
+                android:src="@drawable/bt_disconnected_gray"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="75dp"/>

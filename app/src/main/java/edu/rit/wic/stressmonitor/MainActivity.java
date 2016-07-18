@@ -1,5 +1,6 @@
 package edu.rit.wic.stressmonitor;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -11,6 +12,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+//        startActivity(new Intent(this, LoginActivity.class));
+
         Toolbar menu = (Toolbar) findViewById(R.id.menu_bar);
         setSupportActionBar(menu);
 
@@ -26,11 +30,6 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_settings:
                 // User chose the "Settings" item, show the app settings UI...
-                return true;
-
-            case R.id.action_favorite:
-                // User chose the "Favorite" action, mark the current item
-                // as a favorite...
                 return true;
 
             default:
