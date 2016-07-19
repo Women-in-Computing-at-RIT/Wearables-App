@@ -65,7 +65,6 @@ public class LoginActivity extends AppCompatActivity {
                 public void run() {
                     // On complete call either onLoginSuccess or onLoginFailed
                     onLoginSuccess();
-                    // onLoginFailed();
                     progressDialog.dismiss();
                 }
             }, 3000);
@@ -83,7 +82,9 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onLoginSuccess() {
         _loginButton.setEnabled(true);
-
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
         finish();
     }
 
