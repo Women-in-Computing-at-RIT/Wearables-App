@@ -1,6 +1,7 @@
 package edu.rit.wic.stressmonitor;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -68,6 +69,9 @@ public class RegisterActivity extends AppCompatActivity {
     public void onRegisterSuccess() {
         _registerButton.setEnabled(true);
         setResult(RESULT_OK, null);
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
         finish();
     }
 
