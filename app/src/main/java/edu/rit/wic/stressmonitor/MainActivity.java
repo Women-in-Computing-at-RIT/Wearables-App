@@ -9,8 +9,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import butterknife.ButterKnife;
-import butterknife.Bind;
 import edu.rit.wic.stressmonitor.bluefruit.BluefruitScanActivity;
 
 
@@ -46,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main, menu);
         MenuItem profile = menu.findItem(R.id.action_profile);
         profile.setVisible(true);
+
         return true;
     }
 
@@ -53,7 +52,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_profile:
+                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
                 return true;
+
             case R.id.action_settings:
                 // User chose the "Settings" item, show the app settings UI...
                 return true;
