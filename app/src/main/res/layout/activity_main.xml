@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent" >
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical" android:layout_width="match_parent"
@@ -10,13 +9,14 @@
 
         <RelativeLayout android:id="@+id/connected_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:paddingTop="10dp">
 
             <ImageView android:id="@+id/bt_icon_green"
                 android:src="@drawable/bt_connected_green"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="75dp"/>
+                android:layout_marginLeft="80dp"/>
 
             <TextView android:id="@+id/link_connected_devices"
                 android:layout_width="wrap_content"
@@ -32,7 +32,7 @@
                 android:src="@drawable/bt_disconnected_gray"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="75dp"/>
+                android:layout_marginLeft="80dp"/>
 
             <TextView android:id="@+id/link_disconnected_devices"
                 android:layout_width="wrap_content"
@@ -43,6 +43,125 @@
                 android:text="@string/device_disconnected"
                 android:layout_toEndOf="@+id/bt_icon_gray"
                 android:layout_gravity="center_horizontal" />
+        </RelativeLayout>
+
+        <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical" android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:columnCount="3"
+            android:rowCount="2">
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/bpm_chart"
+                android:layout_width="match_parent"
+                android:layout_height="379dp"
+                android:layout_column="0"
+                android:layout_columnSpan="3"
+                android:layout_row="0"
+                android:layout_rowSpan="1" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_row="1"
+                android:layout_column="1"
+                android:weightSum="1">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:weightSum="1">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="@string/bpm_average_label"
+                        android:id="@+id/bpm_average_label"
+                        android:layout_weight="0.15"
+                        android:textAlignment="textEnd" />
+
+                    <TextView
+                        android:id="@+id/bpm_average"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/bpm_initial"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginEnd="10dp"
+                        android:gravity="end"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textAlignment="center" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:weightSum="1">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="@string/bpm_median_label"
+                        android:id="@+id/bpm_median_label"
+                        android:layout_weight="0.15"
+                        android:textAlignment="textEnd" />
+
+                    <TextView
+                        android:id="@+id/bpm_median"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/bpm_initial"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginEnd="10dp"
+                        android:gravity="end"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textAlignment="center" />
+                </LinearLayout>
+            </LinearLayout>
+        </GridLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp" >
+
+            <ImageView android:id="@+id/avatar_img"
+                android:src="@drawable/user_avatar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="75dp"/>
+
+            <TextView android:id="@+id/link_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:text="@string/profile_label"
+                android:layout_toEndOf="@+id/avatar_img"
+                android:layout_gravity="center_horizontal" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp" >
+
+            <ImageView android:id="@+id/contact_img"
+                android:src="@drawable/contact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="75dp"/>
+
+            <TextView android:id="@+id/link_contact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:text="@string/contact_label"
+                android:layout_toEndOf="@+id/contact_img"
+                android:layout_gravity="center_horizontal" />
+
         </RelativeLayout>
 
     </LinearLayout>

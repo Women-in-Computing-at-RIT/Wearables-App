@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import butterknife.ButterKnife;
 import butterknife.Bind;
-import edu.rit.wic.stressmonitor.bluefruit.BluefruitScanActivity;
 import io.requery.Persistable;
 import io.requery.rx.SingleEntityStore;
 
