@@ -53,6 +53,8 @@ dependencies {
         transitive = true
     }
 
+
+
     // requery dependencies
     // for android
     apt 'io.requery:requery-processor:1.0.0-beta23'   // use an APT plugin

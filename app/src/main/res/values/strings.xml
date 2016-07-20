@@ -48,5 +48,8 @@
     <string name="drawer_close">Close navigation drawer</string>
     <string name="profile_drawer">Profile</string>
     <string name="contact_drawer">Contact Support</string>
+    <string name="phone_number">(555) 555-5555</string>
+    <string name="email_address">support@help.com</string>
+    <string name="email_us">Email Us</string>
 
 </resources>
