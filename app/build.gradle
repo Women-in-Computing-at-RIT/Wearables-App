@@ -49,17 +49,21 @@ dependencies {
 
     compile 'com.jakewharton:butterknife:7.0.1'
 
+    compile('com.mikepenz:materialdrawer:5.3.6@aar') {
+        transitive = true
+    }
+
     // requery dependencies
     // for android
     apt 'io.requery:requery-processor:1.0.0-beta23'   // use an APT plugin
     provided 'io.requery:requery-processor:1.0-SNAPSHOT'
-    compile 'com.android.support:appcompat-v7:24.0.0'
+    compile 'com.android.support:appcompat-v7:24.1.0'
     compile 'io.requery:requery:1.0.0-beta23'
     compile 'io.requery:requery-android:1.0.0-beta23'
     compile 'net.zetetic:android-database-sqlcipher:3.4.0'
     compile 'io.requery:sqlite-android:3.13.0-2'
-    compile 'com.android.support:recyclerview-v7:24.0.0'
+    compile 'com.android.support:recyclerview-v7:24.1.0'
     compile 'io.reactivex:rxjava:1.1.5'
     compile 'io.reactivex:rxandroid:1.1.0'
-    compile 'com.android.support:design:24.0.0'
+    compile 'com.android.support:design:24.1.0'
 }

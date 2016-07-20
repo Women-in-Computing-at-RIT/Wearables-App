@@ -36,7 +36,17 @@
     <string name="device_connected">Device Connected</string>
     <string name="device_disconnected">Device Disconnected</string>
 
+    <string-array name="drawer_menu">
+        <item>Profile</item>
+        <item>Contact Support</item>
+    </string-array>
     <string name="profile_label">Profile</string>
-    <string name="contact_label">Contact Us</string>
+    <string name="contact_label">Contact Support</string>
+    <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="profile_drawer">Profile</string>
+    <string name="contact_drawer">Contact Support</string>
 
 </resources>
