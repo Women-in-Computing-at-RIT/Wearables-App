@@ -2,6 +2,8 @@ package edu.rit.wic.stressmonitor;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -29,6 +31,15 @@ public class MainActivity extends AppCompatActivity {
             actionBar.setLogo(R.drawable.profile);
         }
 
+        // Get the ViewPager and set it's PagerAdapter so that it can display items
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager.setAdapter(new MyFragmentPagerAdapter(getSupportFragmentManager(),
+                MainActivity.this));
+
+        // Give the TabLayout the ViewPager
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
+        tabLayout.setupWithViewPager(viewPager);
+
         connected_link = (TextView) findViewById(R.id.link_connected_devices);
         disconnected_link = (TextView) findViewById(R.id.link_disconnected_devices);
 
@@ -42,18 +53,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
-        MenuItem profile = menu.findItem(R.id.action_profile);
-        profile.setVisible(true);
-
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_profile:
-                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
-                return true;
+//            case R.id.action_profile:
+//                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+//                return true;
 
             case R.id.action_settings:
                 // User chose the "Settings" item, show the app settings UI...
@@ -69,9 +77,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onPostResume() {
-//        disconnected_link.setOnClickListener(
-//                (v) -> startActivity(new Intent(MainActivity.this, BluefruitScanActivity.class))
-//        );
         connected_link.setOnClickListener(
                 (v) -> startActivity(new Intent(MainActivity.this, BluefruitScanActivity.class))
         );

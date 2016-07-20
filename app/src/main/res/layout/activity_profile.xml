@@ -29,5 +29,28 @@
                 android:layout_gravity="center_horizontal" />
         </RelativeLayout>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp" >
+
+            <ImageView android:id="@+id/contact_img"
+                android:src="@drawable/contact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="75dp"/>
+
+            <TextView android:id="@+id/link_contact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:text="@string/contact_label"
+                android:layout_toEndOf="@+id/contact_img"
+                android:layout_gravity="center_horizontal" />
+
+        </RelativeLayout>
+
     </LinearLayout>
 </ScrollView>

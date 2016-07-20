@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    >
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical" android:layout_width="match_parent"
@@ -16,12 +18,13 @@
                 android:src="@drawable/bt_connected_green"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="80dp"/>
+                android:layout_marginStart="10dp"/>
 
             <TextView android:id="@+id/link_connected_devices"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
+                android:layout_marginStart="10dp"
                 android:textAlignment="center"
                 android:textSize="20sp"
                 android:text="@string/device_connected"
@@ -32,18 +35,26 @@
                 android:src="@drawable/bt_disconnected_gray"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="80dp"/>
+                android:layout_marginStart="10dp"/>
 
             <TextView android:id="@+id/link_disconnected_devices"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
+                android:layout_marginStart="10dp"
                 android:textAlignment="center"
                 android:textSize="20sp"
                 android:text="@string/device_disconnected"
                 android:layout_toEndOf="@+id/bt_icon_gray"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"/>
         </RelativeLayout>
+
+        <View
+            android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="#90909090"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp" />
 
         <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:orientation="vertical" android:layout_width="match_parent"
@@ -59,110 +70,95 @@
                 android:layout_row="0"
                 android:layout_rowSpan="1" />
 
-            <LinearLayout
-                android:orientation="vertical"
+            <!--<LinearLayout-->
+                <!--android:orientation="vertical"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_row="1"-->
+                <!--android:layout_column="1"-->
+                <!--android:weightSum="1">-->
+                <!--<LinearLayout-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:weightSum="1">-->
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+                        <!--android:text="@string/bpm_average_label"-->
+                        <!--android:id="@+id/bpm_average_label"-->
+                        <!--android:layout_weight="0.15"-->
+                        <!--android:textAlignment="textEnd" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/bpm_average"-->
+                        <!--android:layout_width="60dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="@string/bpm_initial"-->
+                        <!--android:layout_marginBottom="15dp"-->
+                        <!--android:layout_marginEnd="10dp"-->
+                        <!--android:gravity="end"-->
+                        <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+                        <!--android:textAlignment="center" />-->
+                <!--</LinearLayout>-->
+                <!--<LinearLayout-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:weightSum="1">-->
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+                        <!--android:text="@string/bpm_median_label"-->
+                        <!--android:id="@+id/bpm_median_label"-->
+                        <!--android:layout_weight="0.15"-->
+                        <!--android:textAlignment="textEnd" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/bpm_median"-->
+                        <!--android:layout_width="60dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="@string/bpm_initial"-->
+                        <!--android:layout_marginBottom="15dp"-->
+                        <!--android:layout_marginEnd="10dp"-->
+                        <!--android:gravity="end"-->
+                        <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+                        <!--android:textAlignment="center" />-->
+
+                <!--</LinearLayout>-->
+            <!--</LinearLayout>-->
+
+            <View
+                android:layout_height="1dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_row="1"
-                android:layout_column="1"
-                android:weightSum="1">
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:weightSum="1">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/bpm_average_label"
-                        android:id="@+id/bpm_average_label"
-                        android:layout_weight="0.15"
-                        android:textAlignment="textEnd" />
-
-                    <TextView
-                        android:id="@+id/bpm_average"
-                        android:layout_width="60dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/bpm_initial"
-                        android:layout_marginBottom="15dp"
-                        android:layout_marginEnd="10dp"
-                        android:gravity="end"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textAlignment="center" />
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:weightSum="1">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/bpm_median_label"
-                        android:id="@+id/bpm_median_label"
-                        android:layout_weight="0.15"
-                        android:textAlignment="textEnd" />
-
-                    <TextView
-                        android:id="@+id/bpm_median"
-                        android:layout_width="60dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/bpm_initial"
-                        android:layout_marginBottom="15dp"
-                        android:layout_marginEnd="10dp"
-                        android:gravity="end"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textAlignment="center" />
-                </LinearLayout>
-            </LinearLayout>
+                android:background="#90909090"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp" />
         </GridLayout>
 
-        <RelativeLayout
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="10dp" >
+            android:orientation="vertical">
 
-            <ImageView android:id="@+id/avatar_img"
-                android:src="@drawable/user_avatar"
-                android:layout_width="wrap_content"
+            <android.support.design.widget.TabLayout
+                android:id="@+id/sliding_tabs"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="75dp"/>
+                app:tabMode="scrollable" />
 
-            <TextView android:id="@+id/link_profile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                android:text="@string/profile_label"
-                android:layout_toEndOf="@+id/avatar_img"
-                android:layout_gravity="center_horizontal" />
-        </RelativeLayout>
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1"
+                android:background="@android:color/white" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="10dp" >
+        </LinearLayout>
 
-            <ImageView android:id="@+id/contact_img"
-                android:src="@drawable/contact"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="75dp"/>
-
-            <TextView android:id="@+id/link_contact"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                android:text="@string/contact_label"
-                android:layout_toEndOf="@+id/contact_img"
-                android:layout_gravity="center_horizontal" />
-
-        </RelativeLayout>
 
     </LinearLayout>
 </ScrollView>
