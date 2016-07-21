@@ -19,7 +19,6 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import edu.rit.wic.stressmonitor.bluefruit.BluefruitScanActivity;
 
-
 public class MainActivity extends AppCompatActivity {
     TextView textView;
     ImageView imageView;
@@ -55,15 +54,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             textView.setText(R.string.device_disconnected);
         }
-
-
-//        disconnected_link = (TextView) findViewById(R.id.link_disconnected_devices);
-
-//        If connected to device via Bluetooth
-//        findViewById(R.id.link_connected_devices).setVisibility(View.VISIBLE);
-//        findViewById(R.id.bt_icon_green).setVisibility(View.INVISIBLE);
-//        findViewById(R.id.link_disconnected_devices).setVisibility(View.INVISIBLE);
-//        findViewById(R.id.bt_icon_gray).setVisibility(View.VISIBLE);
     }
 
     // Menu icons are inflated just as they were with actionbar
