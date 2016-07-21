@@ -2,13 +2,12 @@ package edu.rit.wic.stressmonitor;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mikepenz.materialdrawer.Drawer;
@@ -22,8 +21,8 @@ import edu.rit.wic.stressmonitor.bluefruit.BluefruitScanActivity;
 
 
 public class MainActivity extends AppCompatActivity {
-    TextView connected_link;
-    TextView disconnected_link;
+    TextView textView;
+    ImageView imageView;
     Drawer nav_drawer;
     Toolbar toolbar;
     ActionBar actionBar;
@@ -42,23 +41,29 @@ public class MainActivity extends AppCompatActivity {
         // Creates navigation drawer
         createNavDrawer();
 
-        // Get the ViewPager and set it's PagerAdapter so that it can display items
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        viewPager.setAdapter(new MyFragmentPagerAdapter(getSupportFragmentManager(),
-                MainActivity.this));
+        boolean connected = false;
+        imageView = (ImageView) findViewById(R.id.bt_icon);
+        if (connected) {
+            imageView.setImageResource(R.drawable.bt_connected_green);
+        } else {
+            imageView.setImageResource(R.drawable.bt_disconnected_gray);
+        }
 
-        // Give the TabLayout the ViewPager
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
-        tabLayout.setupWithViewPager(viewPager);
+        textView = (TextView) findViewById(R.id.link_devices);
+        if (connected) {
+            textView.setText(R.string.device_connected);
+        } else {
+            textView.setText(R.string.device_disconnected);
+        }
 
-        connected_link = (TextView) findViewById(R.id.link_connected_devices);
-        disconnected_link = (TextView) findViewById(R.id.link_disconnected_devices);
+
+//        disconnected_link = (TextView) findViewById(R.id.link_disconnected_devices);
 
 //        If connected to device via Bluetooth
-        findViewById(R.id.link_connected_devices).setVisibility(View.VISIBLE);
-        findViewById(R.id.bt_icon_green).setVisibility(View.VISIBLE);
-        findViewById(R.id.link_disconnected_devices).setVisibility(View.INVISIBLE);
-        findViewById(R.id.bt_icon_gray).setVisibility(View.INVISIBLE);
+//        findViewById(R.id.link_connected_devices).setVisibility(View.VISIBLE);
+//        findViewById(R.id.bt_icon_green).setVisibility(View.INVISIBLE);
+//        findViewById(R.id.link_disconnected_devices).setVisibility(View.INVISIBLE);
+//        findViewById(R.id.bt_icon_gray).setVisibility(View.VISIBLE);
     }
 
     // Menu icons are inflated just as they were with actionbar
@@ -111,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onPostResume() {
-        connected_link.setOnClickListener(
+        textView.setOnClickListener(
                 (v) -> startActivity(new Intent(MainActivity.this, BluefruitScanActivity.class))
         );
         super.onPostResume();
