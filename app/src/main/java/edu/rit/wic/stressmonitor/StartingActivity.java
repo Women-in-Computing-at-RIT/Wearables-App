@@ -46,6 +46,13 @@ public class StartingActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        //Hide settings menu item
+        menu.findItem(R.id.action_settings).setVisible(false);
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
     protected void onPostResume() {
         loginBtn.setOnClickListener(
                 (v) -> startActivity(new Intent(StartingActivity.this, LoginActivity.class))

@@ -55,6 +55,13 @@ public class RegisterActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        //Hide settings menu item
+        menu.findItem(R.id.action_settings).setVisible(false);
+        return super.onPrepareOptionsMenu(menu);
+    }
+
     public void register() {
         Log.d(TAG, "Register");
 

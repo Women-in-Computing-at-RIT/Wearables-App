@@ -48,6 +48,9 @@ public class ProfileActivity extends AppCompatActivity {
             case android.R.id.home:
                 startActivity(new Intent(this, MainActivity.class));
                 return true;
+            case R.id.action_settings:
+                // User chose the "Settings" item, show the app settings UI...
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
