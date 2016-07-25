@@ -24,11 +24,11 @@
         <activity android:name=".StartingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".bluefruit.BluefruitScanActivity" />
+        <activity android:name=".bluefruit.BluefruitScanActivity"
+            android:theme="@style/ListActivityTheme"/>
         <activity android:name=".TelemetryActivity" />
 
         <service android:name=".bluefruit.BluefruitService" />
