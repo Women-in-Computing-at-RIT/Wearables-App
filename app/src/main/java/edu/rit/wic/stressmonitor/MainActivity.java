@@ -1,5 +1,11 @@
 package edu.rit.wic.stressmonitor;
 
+
+import android.bluetooth.BluetoothGattCharacteristic;
+import android.bluetooth.BluetoothGattDescriptor;
+import android.bluetooth.BluetoothGattService;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -11,14 +17,20 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.annimon.stream.Optional;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
+import com.orhanobut.logger.Logger;
 
+import edu.rit.wic.stressmonitor.bluefruit.BluefruitConstants;
 import edu.rit.wic.stressmonitor.bluefruit.BluefruitScanActivity;
+import edu.rit.wic.stressmonitor.bluefruit.BluefruitService;
+import edu.rit.wic.stressmonitor.bluefruit.BluefruitUtils;
+
 
 public class MainActivity extends AppCompatActivity {
     TextView textView;
@@ -41,21 +53,93 @@ public class MainActivity extends AppCompatActivity {
         // Creates navigation drawer
         createNavDrawer();
 
-        boolean connected = false;
         imageView = (ImageView) findViewById(R.id.bt_icon);
-        if (connected) {
+        if (isConnected()) {
             imageView.setImageResource(R.drawable.bt_connected_green);
         } else {
             imageView.setImageResource(R.drawable.bt_disconnected_gray);
         }
 
         textView = (TextView) findViewById(R.id.link_devices);
-        if (connected) {
+        if (isConnected()) {
             textView.setText(R.string.device_connected);
         } else {
             textView.setText(R.string.device_disconnected);
         }
     }
+    private BluefruitService bluefruitService;
+    private String deviceName;
+    private String deviceAddress;
+    private boolean connected = false;
+
+    private Optional<BluetoothGattCharacteristic> txGatt = Optional.empty(), rxGatt = Optional.empty();
+    private final BroadcastReceiver gattUpdaterReceiver = new BroadcastReceiver() {
+
+        private static final int SAMPLES = 30;          // Number of BPM Readings to Sample
+        private int[] sampleValues = new int[SAMPLES];  // Container for BPM Readings
+        private int valueCounter = 0;                   // Index Counter
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            final String action = intent.getAction();
+
+            if(BluefruitUtils.ACTION_GATT_CONNECTED.equals(action)) {
+                connected = true;
+                invalidateOptionsMenu();
+            } else if(BluefruitUtils.ACTION_GATT_DISCONNECTED.equals(action)) {
+                // No longer connected, free references to TX and RX Characteristics
+                connected = false;
+                txGatt = Optional.empty();
+                rxGatt = Optional.empty();
+                invalidateOptionsMenu();
+            } else if(BluefruitUtils.ACTION_GATT_SERVICES_DISCOVERED.equals(action)) {
+                Optional<BluetoothGattService> uartOption = bluefruitService.getGattService(BluefruitConstants.UUID_UART);
+
+                if(uartOption.isPresent()) {
+
+                    /*
+                        If we detect a UART Service, we are going to determine if RX and TX are
+                        available Characteristics of that service. The Flora provides a UART
+                        service with access to these characteristics (Receiving and Transmitting)
+                     */
+
+                    BluetoothGattService uart = uartOption.get();
+
+                    for(BluetoothGattCharacteristic c : uart.getCharacteristics())
+                        Logger.i("UART CHARACTERISTIC FOUND: %s", c.getUuid().toString());
+
+                    Logger.d("Getting TX and RX characteristics...");
+                    txGatt = Optional.of(uart.getCharacteristic(BluefruitConstants.UUID_TX));
+                    rxGatt = Optional.of(uart.getCharacteristic(BluefruitConstants.UUID_RX));
+
+                    // Set Characteristic Notification to RX
+                    bluefruitService.setCharacteristicNotification(rxGatt.get(), true);
+
+                    BluetoothGattDescriptor rxDescriptor = rxGatt.get().getDescriptor(BluefruitConstants.UUID_CLIENT);
+                    if(rxDescriptor != null) {
+                        rxDescriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
+                        if(!bluefruitService.writeDescriptor(rxDescriptor))
+                            Logger.w("Couldn't write RX Client Descriptor Value!");
+                    }
+
+                    Logger.i("UART is supported by device!");
+                } else {
+                    Logger.w("Device does not support UART!");
+                }
+
+            } else if(BluefruitUtils.ACTION_DATA_AVAILABLE.equals(action)){
+                // Extra Data in this case is going to be whatever data the RX Characteristic gave us
+                String extraData = intent.getStringExtra(BluefruitUtils.EXTRA_DATA);
+            }
+
+        }
+    };
+
+    public boolean isConnected() {
+        return connected;
+    }
+
+
 
     // Menu icons are inflated just as they were with actionbar
     @Override

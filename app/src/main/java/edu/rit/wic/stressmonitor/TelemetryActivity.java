@@ -12,6 +12,11 @@ import android.content.ServiceConnection;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.annimon.stream.Optional;
@@ -37,7 +42,9 @@ import edu.rit.wic.stressmonitor.bluefruit.BluefruitUtils;
 /**
  * Created by Matthew on 5/6/2016.
  */
-public class TelemetryActivity extends Activity {
+public class TelemetryActivity extends AppCompatActivity {
+    Toolbar toolbar;
+    ActionBar actionBar;
 
     // Data Set Name Constants
     private static final String BPM_DATA_NAME = "BPM",
@@ -171,10 +178,18 @@ public class TelemetryActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.telemetry_activity);
 
+        // Find the toolbar view inside the activity layout
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(R.mipmap.ic_arrow_back_white_24dp);
+        toolbar.setTitle("BPM Monitor");
+        // Sets the Toolbar to act as the ActionBar for this Activity window.
+        // Make sure the toolbar exists in the activity and is not null
+        setSupportActionBar(toolbar);
+
         // Retrieve Views from Layout
         this.bpmAverageField = (TextView) findViewById(R.id.bpm_average);
         this.bpmMedianField = (TextView) findViewById(R.id.bpm_median);
-        this.bpmChart = (LineChart) findViewById(R.id.bpm_chart);
+        this.bpmChart = (LineChart) findViewById(R.id.live_chart_view);
 
         // Get Device Name and Address for connecting from Intent
         final Intent intent = getIntent();
@@ -227,11 +242,34 @@ public class TelemetryActivity extends Activity {
         Logger.i("Finished initializing TelemetryActivity");
     }
 
+    // Menu icons are inflated just as they were with actionbar
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // TODO Auto-generated method stub
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                startActivity(new Intent(this, MainActivity.class));
+                return true;
+            case R.id.action_settings:
+                // User chose the "Settings" item, show the app settings UI...
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
 
-        // Use our receiver to receive bluetooth data asynchronously, will also handle updating
+        // Use our receiver to receive bluetooth data asynchronously, while also handle updating
         // the chart.
         registerReceiver(gattUpdaterReceiver, BluefruitUtils.makeGattUpdateIntentFilter());
 
