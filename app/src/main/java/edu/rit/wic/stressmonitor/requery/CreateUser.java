@@ -19,8 +19,8 @@ import rx.Observable;
 
 
 public class CreateUser implements Callable<Observable<Iterable<Person>>> {
-    @Bind(R.id.input_name)
-    EditText _nameText;
+//    @Bind(R.id.input_name)
+//    EditText _nameText;
     @Bind(R.id.input_email) EditText _emailText;
     @Bind(R.id.input_password) EditText _passwordText;
 
@@ -32,7 +32,7 @@ public class CreateUser implements Callable<Observable<Iterable<Person>>> {
 
     @Override
     public Observable<Iterable<Person>> call() {
-        String name = _nameText.getText().toString();
+//        String name = _nameText.getText().toString();
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
         final Set<Person> people = new TreeSet<>(new Comparator<Person>() {
@@ -42,7 +42,7 @@ public class CreateUser implements Callable<Observable<Iterable<Person>>> {
             }
         });
         PersonEntity person = new PersonEntity();
-        person.setName(name);
+//        person.setName(name);
         person.setUUID(UUID.randomUUID());
         person.setEmail(email);
         person.setPassword(password);

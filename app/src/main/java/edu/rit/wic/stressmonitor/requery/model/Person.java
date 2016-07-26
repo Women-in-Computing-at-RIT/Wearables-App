@@ -26,7 +26,7 @@ import java.util.UUID;
 public interface Person extends Observable, Parcelable, Persistable {
     @Key
     @Generated
-    int getID();
+    int getId();
 
     @Bindable
     String getName();
