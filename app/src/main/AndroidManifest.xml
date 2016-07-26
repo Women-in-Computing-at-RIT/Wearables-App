@@ -43,6 +43,11 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+        <activity android:name=".ProfileInformationActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
         <activity android:name=".ForgotPasswordActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -26,10 +26,16 @@
     <string name="forgot_password_instr">Please enter your email address \n
         to reset your password</string>
 
+    <string name="info_label">About You</string>
+    <string name="info_instr">Please enter more about yourself</string>
+    <string name="birthday_label">Birthday</string>
+    <string name="phone_number_label">Phone Number</string>
+
     <!--Button Labels-->
     <string name="login_btn_label">Login</string>
     <string name="register_btn_label">Register</string>
     <string name="forgot_password_btn_label">Send</string>
+    <string name="submit_info_btn_label">Submit</string>
 
     <string name="action_settings">Settings</string>
 

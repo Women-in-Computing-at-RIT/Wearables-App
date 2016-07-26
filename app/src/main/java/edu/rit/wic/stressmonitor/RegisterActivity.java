@@ -51,23 +51,23 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_register);
-        data = ((UserApplication) getApplication()).getData();
-        int personId = getIntent().getIntExtra(EXTRA_PERSON_ID, -1);
-        if (personId == -1) {
-            person = new PersonEntity(); // creating a new person
-            binding.setPerson(person);
-        } else {
-            data.findByKey(PersonEntity.class, personId)
-            .subscribeOn(AndroidSchedulers.mainThread())
-            .subscribe(new Action1<PersonEntity>() {
-                @Override
-                public void call(PersonEntity person) {
-                    RegisterActivity.this.person = person;
-                    binding.setPerson(person);
-                }
-            });
-        }
+//        binding = DataBindingUtil.setContentView(this, R.layout.activity_register);
+//        data = ((UserApplication) getApplication()).getData();
+//        int personId = getIntent().getIntExtra(EXTRA_PERSON_ID, -1);
+//        if (personId == -1) {
+//            person = new PersonEntity(); // creating a new person
+//            binding.setPerson(person);
+//        } else {
+//            data.findByKey(PersonEntity.class, personId)
+//            .subscribeOn(AndroidSchedulers.mainThread())
+//            .subscribe(new Action1<PersonEntity>() {
+//                @Override
+//                public void call(PersonEntity person) {
+//                    RegisterActivity.this.person = person;
+//                    binding.setPerson(person);
+//                }
+//            });
+//        }
 
         // Find the toolbar view inside the activity layout
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -129,10 +129,10 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void onRegisterSuccess() {
-        savePerson();
+//        savePerson();
         _registerButton.setEnabled(true);
         setResult(RESULT_OK, null);
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, ProfileInformationActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
