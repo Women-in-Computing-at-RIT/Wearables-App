@@ -13,6 +13,7 @@
     <string name="bpm_median_label">Median BPM</string>
 
     <!--Login/Register labels-->
+    <string name="registration_label">Registration</string>
     <string name="name_label">Name</string>
     <string name="first_name_label">First Name</string>
     <string name="last_name_label">Last Name</string>

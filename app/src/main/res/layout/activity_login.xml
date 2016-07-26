@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="30dp"
             android:paddingBottom="20dp"
-            android:text="@string/app_name"
+            android:text="@string/login_btn_label"
             android:textAlignment="center"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 

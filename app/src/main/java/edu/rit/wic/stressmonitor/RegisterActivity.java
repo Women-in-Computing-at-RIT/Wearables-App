@@ -27,7 +27,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
 public class RegisterActivity extends AppCompatActivity {
-
+    private static final int REQUEST_LOGIN = 0;
     private static final String TAG = "RegisterActivity";
     static final String EXTRA_PERSON_ID = "personId";
     private SingleEntityStore<Persistable> data;
@@ -36,8 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
     private PersonEntity person;
     private ActivityRegisterBinding binding;
 
-//    @Bind(R.id.input_first_name) EditText _firstNameText;
-//    @Bind(R.id.input_last_name) EditText _lastNameText;
+
 //    @Bind(R.id.input_name) EditText _nameText;
     @Bind(R.id.input_email) EditText _emailText;
     @Bind(R.id.input_password) EditText _passwordText;
@@ -76,9 +75,8 @@ public class RegisterActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         _registerButton.setOnClickListener((v) -> register());
-
-        // Finish the registration screen and return to the Login activity
-        _loginLink.setOnClickListener((v) -> finish());
+        _loginLink.setOnClickListener((v) ->
+                startActivityForResult(new Intent(getApplicationContext(), LoginActivity.class), REQUEST_LOGIN));
 
 //        data = ((UserApplication) getApplication()).getData();
 //        executor = Executors.newSingleThreadExecutor();
@@ -128,6 +126,16 @@ public class RegisterActivity extends AppCompatActivity {
                 }, 3000);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_LOGIN) {
+            if (resultCode == RESULT_OK) {
+                // By default we just finish the Activity and log them in automatically
+                this.finish();
+            }
+        }
+    }
+
     public void onRegisterSuccess() {
 //        savePerson();
         _registerButton.setEnabled(true);
@@ -146,33 +154,9 @@ public class RegisterActivity extends AppCompatActivity {
     public boolean validateFields() {
         boolean valid = true;
 
-//        String firstName = _firstNameText.getText().toString();
-//        String lastName = _lastNameText.getText().toString();
-//        String name = _nameText.getText().toString();
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
         String confirmPassword = _confirmPasswordText.getText().toString();
-
-//        if (name.isEmpty() || name.length() < 3) {
-//            _nameText.setError("Must be at least 3 characters");
-//            valid = false;
-//        } else {
-//            _nameText.setError(null);
-//        }
-
-//        if (firstName.isEmpty() || firstName.length() < 3) {
-//            _firstNameText.setError("Must be at least 3 characters");
-//            valid = false;
-//        } else {
-//            _firstNameText.setError(null);
-//        }
-//
-//        if (lastName.isEmpty() || lastName.length() < 3) {
-//            _lastNameText.setError("Must be at least 3 characters");
-//            valid = false;
-//        } else {
-//            _lastNameText.setError(null);
-//        }
 
         if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             _emailText.setError("Enter a valid email address");

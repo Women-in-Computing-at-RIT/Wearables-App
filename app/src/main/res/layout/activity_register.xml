@@ -24,30 +24,9 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="30dp"
                 android:paddingBottom="20dp"
-                android:text="@string/app_name"
+                android:text="@string/registration_label"
                 android:textAlignment="center"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
-
-            <!--<EditText android:id="@+id/input_name"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_margin="20dp"-->
-                <!--android:inputType="textPersonName"-->
-                <!--android:hint="@string/name_label" />-->
-
-            <!--<EditText android:id="@+id/input_first_name"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_margin="20dp"-->
-                <!--android:inputType="textPersonName"-->
-                <!--android:hint="@string/first_name_label" />-->
-
-            <!--<EditText android:id="@+id/input_last_name"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_margin="20dp"-->
-                <!--android:inputType="textPersonName"-->
-                <!--android:hint="@string/last_name_label" />-->
 
             <EditText android:id="@+id/input_email"
                 android:layout_width="match_parent"

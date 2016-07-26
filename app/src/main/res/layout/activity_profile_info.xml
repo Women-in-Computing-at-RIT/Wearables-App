@@ -54,7 +54,13 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:inputType="date"
-                android:hint="@string/birthday_label" />
+                android:hint="@string/birthday_label"
+                android:focusable="false"/>
+            <!--<Button android:id="@+id/input_birthday"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/birthday_label"-->
+                <!--android:onClick="showDatePickerDialog" />-->
 
             <EditText android:id="@+id/input_phone_number"
                 android:layout_width="match_parent"
