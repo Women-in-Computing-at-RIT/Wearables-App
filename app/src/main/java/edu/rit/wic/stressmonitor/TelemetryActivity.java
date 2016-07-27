@@ -189,7 +189,7 @@ public class TelemetryActivity extends AppCompatActivity {
         // Retrieve Views from Layout
         this.bpmAverageField = (TextView) findViewById(R.id.bpm_average);
         this.bpmMedianField = (TextView) findViewById(R.id.bpm_median);
-        this.bpmChart = (LineChart) findViewById(R.id.live_chart_view);
+        this.bpmChart = (LineChart) findViewById(R.id.bpm_chart);
 
         // Get Device Name and Address for connecting from Intent
         final Intent intent = getIntent();

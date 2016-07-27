@@ -15,8 +15,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.orhanobut.logger.Logger;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import edu.rit.wic.stressmonitor.requery.CreateUser;
 import edu.rit.wic.stressmonitor.requery.PeopleApplication;
 import edu.rit.wic.stressmonitor.requery.model.Person;
 import edu.rit.wic.stressmonitor.requery.model.PersonEntity;
@@ -51,7 +54,8 @@ public class RegisterActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
 //        binding = DataBindingUtil.setContentView(this, R.layout.activity_register);
-//        data = ((PeopleApplication) getApplication()).getData();
+        data = ((PeopleApplication) getApplication()).getData();
+
 //        int personId = getIntent().getIntExtra(EXTRA_PERSON_ID, -1);
 //        if (personId == -1) {
 //            person = new PersonEntity(); // creating a new person
