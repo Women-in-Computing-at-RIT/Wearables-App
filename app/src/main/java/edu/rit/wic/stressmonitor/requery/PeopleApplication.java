@@ -12,7 +12,7 @@ import io.requery.sql.Configuration;
 import io.requery.sql.EntityDataStore;
 import io.requery.sql.TableCreationMode;
 
-public class UserApplication extends Application {
+public class PeopleApplication extends Application {
 
     private SingleEntityStore<Persistable> dataStore;
 

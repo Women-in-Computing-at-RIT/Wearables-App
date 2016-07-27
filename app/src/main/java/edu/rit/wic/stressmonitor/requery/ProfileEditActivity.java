@@ -33,7 +33,7 @@
 //        toolbar.setNavigationIcon(R.mipmap.ic_arrow_back_white_24dp);
 //        toolbar.setTitle("Edit Profile");
 //
-//        data = ((UserApplication) getApplication()).getData();
+//        data = ((PeopleApplication) getApplication()).getData();
 //        int personId = getIntent().getIntExtra(EXTRA_PERSON_ID, -1);
 //        if (personId == -1) {
 //            person = new PersonEntity(); // creating a new person

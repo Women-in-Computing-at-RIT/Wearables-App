@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import edu.rit.wic.stressmonitor.requery.UserApplication;
+import edu.rit.wic.stressmonitor.requery.PeopleApplication;
 import edu.rit.wic.stressmonitor.requery.model.Person;
 import edu.rit.wic.stressmonitor.requery.model.PersonEntity;
 import edu.rit.wic.stressmonitor.databinding.ActivityRegisterBinding;
@@ -51,7 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
 //        binding = DataBindingUtil.setContentView(this, R.layout.activity_register);
-//        data = ((UserApplication) getApplication()).getData();
+//        data = ((PeopleApplication) getApplication()).getData();
 //        int personId = getIntent().getIntExtra(EXTRA_PERSON_ID, -1);
 //        if (personId == -1) {
 //            person = new PersonEntity(); // creating a new person
@@ -78,7 +78,7 @@ public class RegisterActivity extends AppCompatActivity {
         _loginLink.setOnClickListener((v) ->
                 startActivityForResult(new Intent(getApplicationContext(), LoginActivity.class), REQUEST_LOGIN));
 
-//        data = ((UserApplication) getApplication()).getData();
+//        data = ((PeopleApplication) getApplication()).getData();
 //        executor = Executors.newSingleThreadExecutor();
 //        adapter = new PersonAdapter();
 //        adapter.setExecutor(executor);
