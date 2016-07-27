@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import edu.rit.wic.stressmonitor.MainActivity;
 import edu.rit.wic.stressmonitor.R;
 import edu.rit.wic.stressmonitor.TelemetryActivity;
 
@@ -145,7 +146,7 @@ public class BluefruitScanActivity extends ListActivity {
             disableDeviceScan();
 
         // Transfer to TelemetryActivity with Device Name and Device Address in Intent
-        final Intent intent = new Intent(this, TelemetryActivity.class);
+        final Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra(BluefruitConstants.EXTRAS_DEVICE_NAME, device.getName());
         intent.putExtra(BluefruitConstants.EXTRAS_DEVICE_ADDRESS, device.getAddress());
         startActivity(intent);
