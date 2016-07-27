@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ForgotPasswordActivity extends AppCompatActivity {
@@ -20,10 +20,10 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     private static final int REQUEST_REGISTER = 0;
     private static final int REQUEST_LOGIN = 0;
 
-    @Bind(R.id.input_email) EditText _emailText;
-    @Bind(R.id.btn_forgot_pass) Button _sendButton;
-    @Bind(R.id.forgot_register) TextView _registerLink;
-    @Bind(R.id.forgot_login) TextView _loginLink;
+    @BindView(R.id.input_email) EditText _emailText;
+    @BindView(R.id.btn_forgot_pass) Button _sendButton;
+    @BindView(R.id.forgot_register) TextView _registerLink;
+    @BindView(R.id.forgot_login) TextView _loginLink;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import butterknife.ButterKnife;
-import butterknife.Bind;
+import butterknife.BindView;
 import io.requery.Persistable;
 import io.requery.rx.SingleEntityStore;
 
@@ -25,11 +25,11 @@ public class LoginActivity extends AppCompatActivity {
 
     private SingleEntityStore<Persistable> data;
 
-    @Bind(R.id.input_email) EditText _emailText;
-    @Bind(R.id.input_password) EditText _passwordText;
-    @Bind(R.id.btn_login) Button _loginButton;
-    @Bind(R.id.link_register) TextView _registerLink;
-    @Bind(R.id.link_forgot_password) TextView _forgotPasswordLink;
+    @BindView(R.id.input_email) EditText _emailText;
+    @BindView(R.id.input_password) EditText _passwordText;
+    @BindView(R.id.btn_login) Button _loginButton;
+    @BindView(R.id.link_register) TextView _registerLink;
+    @BindView(R.id.link_forgot_password) TextView _forgotPasswordLink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

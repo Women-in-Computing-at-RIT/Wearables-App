@@ -30,20 +30,18 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by Cara on 7/26/2016.
- */
+
 public class ProfileInformationActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     private static final int REQUEST_LOGIN = 0;
-    @Bind(R.id.input_first_name)EditText _firstNameText;
-    @Bind(R.id.input_last_name) EditText _lastNameText;
-    @Bind(R.id.input_birthday) EditText _birthdayText;
-    @Bind(R.id.input_phone_number) EditText _phoneNumberText;
-    @Bind(R.id.btn_submit_info) Button _submitButton;
-    @Bind(R.id.link_login) TextView _loginLink;
+//    @Bind(R.id.input_first_name)EditText _firstNameText;
+//    @Bind(R.id.input_last_name) EditText _lastNameText;
+    @BindView(R.id.input_birthday) EditText _birthdayText;
+    @BindView(R.id.input_phone_number) EditText _phoneNumberText;
+    @BindView(R.id.btn_submit_info) Button _submitButton;
+    @BindView(R.id.link_login) TextView _loginLink;
     private Calendar myCalendar;
     private Spinner genderSpinner;
     private Spinner ethnicitySpinner;
@@ -185,24 +183,24 @@ public class ProfileInformationActivity extends AppCompatActivity implements Ada
     public boolean validateFields() {
         boolean valid = true;
         Date today = new Date();
-        String firstName = _firstNameText.getText().toString();
-        String lastName = _lastNameText.getText().toString();
+//        String firstName = _firstNameText.getText().toString();
+//        String lastName = _lastNameText.getText().toString();
 //        Date birthday = (Date) _birthdayText.getText();
         String phone_number = _phoneNumberText.getText().toString();
 
-        if (firstName.isEmpty() || firstName.length() < 3) {
-            _firstNameText.setError("Must be at least 3 characters");
-            valid = false;
-        } else {
-            _firstNameText.setError(null);
-        }
-
-        if (lastName.isEmpty() || lastName.length() < 3) {
-            _lastNameText.setError("Must be at least 3 characters");
-            valid = false;
-        } else {
-            _lastNameText.setError(null);
-        }
+//        if (firstName.isEmpty() || firstName.length() < 3) {
+//            _firstNameText.setError("Must be at least 3 characters");
+//            valid = false;
+//        } else {
+//            _firstNameText.setError(null);
+//        }
+//
+//        if (lastName.isEmpty() || lastName.length() < 3) {
+//            _lastNameText.setError("Must be at least 3 characters");
+//            valid = false;
+//        } else {
+//            _lastNameText.setError(null);
+//        }
 
 //        if (birthday == null) {
 //            _birthdayText.setError("Required!");
