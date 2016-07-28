@@ -10,6 +10,7 @@ import io.requery.ForeignKey;
 import io.requery.Generated;
 import io.requery.Index;
 import io.requery.Key;
+import io.requery.Nullable;
 import io.requery.OneToMany;
 import android.databinding.Bindable;
 import io.requery.Persistable;
@@ -29,7 +30,12 @@ public interface Person extends Observable, Parcelable, Persistable {
     int getId();
 
     @Bindable
-    String getName();
+    @Nullable
+    String getFirstName();
+
+    @Bindable
+    @Nullable
+    String getLastName();
 
     @Bindable
     @Index(value = "email_index")
