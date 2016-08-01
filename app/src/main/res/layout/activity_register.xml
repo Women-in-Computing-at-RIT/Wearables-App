@@ -28,6 +28,20 @@
                 android:textAlignment="center"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
+            <EditText android:id="@+id/input_first_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:inputType="textPersonName"
+                android:hint="@string/first_name_label" />
+
+            <EditText android:id="@+id/input_last_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:inputType="textPersonName"
+                android:hint="@string/last_name_label" />
+
             <EditText android:id="@+id/input_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -59,7 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:padding="10dp"
+                android:paddingBottom="30dp"
                 android:textAlignment="center"
                 android:text="@string/link_login_label" />
 
