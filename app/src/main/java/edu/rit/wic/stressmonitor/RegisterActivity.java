@@ -236,7 +236,6 @@ public class RegisterActivity extends AppCompatActivity {
 //        } else if (emailInput.equals(emailResult.toString())) {
 //            valid = false;
 //        }
-//        Logger.d("Email: " + data.select(PersonEntity.class).get());
         return valid;
     }
 
