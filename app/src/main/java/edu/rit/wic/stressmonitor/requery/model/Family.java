@@ -14,6 +14,10 @@ import android.databinding.Observable;
 import android.os.Parcelable;
 import io.requery.Persistable;
 
+
+/**
+ * Interface to model the Family relationship
+ */
 @Entity
 public interface Family extends Observable, Parcelable, Persistable{
     @Key

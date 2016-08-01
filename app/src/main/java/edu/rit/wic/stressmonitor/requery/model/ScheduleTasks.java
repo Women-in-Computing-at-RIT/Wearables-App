@@ -2,7 +2,6 @@
  * File: ScheduleTasks.java
  * Created by Cara on 6/21/2016.
  */
-
 package edu.rit.wic.stressmonitor.requery.model;
 
 
@@ -19,6 +18,9 @@ import io.requery.Persistable;
 
 import java.util.Date;
 
+/**
+ * Interface to model tasks that are schedules by the user
+ */
 @Entity
 public interface ScheduleTasks extends Observable, Parcelable, Persistable {
     @Key @Generated

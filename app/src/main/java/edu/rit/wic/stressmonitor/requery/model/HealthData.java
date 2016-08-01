@@ -1,5 +1,5 @@
 /**
- * File: AnstractHealthData.java
+ * File: HealthData.java
  * Created by Cara on 6/21/2016.
  */
 
@@ -18,6 +18,10 @@ import io.requery.Persistable;
 
 import java.util.Date;
 
+
+/**
+ * Interface to model the Health data for a user
+ */
 @Entity
 public interface HealthData extends Observable, Parcelable, Persistable {
     @Key

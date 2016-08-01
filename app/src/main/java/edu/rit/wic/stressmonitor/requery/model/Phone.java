@@ -1,3 +1,7 @@
+/**
+ * File: Phone.java
+ * Created by Cara on 6/21/2016.
+ */
 package edu.rit.wic.stressmonitor.requery.model;
 
 
@@ -11,6 +15,10 @@ import io.requery.Key;
 import io.requery.ManyToOne;
 import io.requery.Persistable;
 
+
+/**
+ * Interface to model a phone numbers for a user
+ */
 @Entity
 public interface Phone extends Observable, Parcelable, Persistable {
 

@@ -23,6 +23,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+
+/**
+ * Interface to model a Person/User
+ */
 @Entity
 public interface Person extends Observable, Parcelable, Persistable {
     @Key
