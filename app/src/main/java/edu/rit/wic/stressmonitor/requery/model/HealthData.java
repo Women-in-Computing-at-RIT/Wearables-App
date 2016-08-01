@@ -12,25 +12,31 @@ import io.requery.Generated;
 import android.databinding.Bindable;
 import android.databinding.Observable;
 import android.os.Parcelable;
+
+import io.requery.Nullable;
 import io.requery.Persistable;
 
 import java.util.Date;
 
 @Entity
 public interface HealthData extends Observable, Parcelable, Persistable {
-    @Key @Generated
+    @Key
     Date getDateTime();
 
     @Bindable
+    @Nullable
     int getBPM();
 
     @Bindable
+    @Nullable
     int getIBI();
 
     @Bindable
+    @Nullable
     int getConductance();
 
     @Bindable
+    @Nullable
     int getStatisticalData();
 
 //    @Bindable
