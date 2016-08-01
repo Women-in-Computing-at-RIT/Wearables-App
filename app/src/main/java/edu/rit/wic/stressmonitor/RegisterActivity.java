@@ -1,5 +1,10 @@
+/**
+ * File: RegisterActivity.java
+ * @author Cara Steinberg
+ */
 package edu.rit.wic.stressmonitor;
 
+import android.annotation.TargetApi;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -14,6 +19,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.orhanobut.logger.Logger;
+import com.annimon.stream.Optional;
+
+
+import java.util.UUID;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.rit.wic.stressmonitor.requery.PeopleApplication;
@@ -26,6 +37,10 @@ import io.requery.rx.SingleEntityStore;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
+
+/**
+ * Activity registers a new user.
+ */
 public class RegisterActivity extends AppCompatActivity {
     private static final int REQUEST_LOGIN = 0;
     private static final String TAG = "RegisterActivity";
@@ -140,7 +155,7 @@ public class RegisterActivity extends AppCompatActivity {
         _registerButton.setEnabled(true);
         setResult(RESULT_OK, null);
         Intent intent = new Intent(this, ProfileInformationActivity.class);
-//        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
     }
@@ -207,19 +222,27 @@ public class RegisterActivity extends AppCompatActivity {
         boolean valid = true;
         emailInput = _emailText.getText().toString();
         Result<Tuple> emailResult = data.select(PersonEntity.EMAIL)
-                                        .where(PersonEntity.EMAIL.eq(emailInput)).get();
-        String email = emailResult.firstOrNull().toString();
+                .where(PersonEntity.EMAIL.eq(emailInput)).get();
 
-        if (email == null) {
-            valid = false;
-        } else if (emailInput.equals(email)) {
+        Optional<Tuple> emailOption = Optional.ofNullable(emailResult.firstOrNull());
+
+        if (emailOption.isPresent()) {
             valid = false;
         }
+
+//        String email = emailResult.firstOrNull().toString();
+//        if (emailResult == null) {
+//            valid = false;
+//        } else if (emailInput.equals(emailResult.toString())) {
+//            valid = false;
+//        }
+//        Logger.d("Email: " + data.select(PersonEntity.class).get());
         return valid;
     }
 
     private void createUser() {
         PersonEntity person = new PersonEntity(); // creating a new person
+        person.setUUID(UUID.randomUUID());
         person.setFirstName(firstName);
         person.setLastName(lastName);
         person.setEmail(emailInput);
