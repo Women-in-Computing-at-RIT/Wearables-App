@@ -1,3 +1,7 @@
+/**
+ * File: ContactActivity.java
+ * @author Cara Steinberg
+ */
 package edu.rit.wic.stressmonitor;
 
 import android.content.Intent;
@@ -9,6 +13,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
+/**
+ * Activity displays the contact support information.
+ */
 public class ContactActivity extends AppCompatActivity {
     Toolbar toolbar;
     ActionBar actionBar;

@@ -1,3 +1,7 @@
+/**
+ * File: ProfileInformationActivity.java
+ * @author Cara Steinberg
+ */
 package edu.rit.wic.stressmonitor;
 
 import android.app.ProgressDialog;
@@ -34,6 +38,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
+/**
+ * Activity gathers additional information about user after registration.
+ */
 public class ProfileInformationActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     private static final int REQUEST_LOGIN = 0;
 //    @Bind(R.id.input_first_name)EditText _firstNameText;

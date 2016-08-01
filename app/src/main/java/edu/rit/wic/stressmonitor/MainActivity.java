@@ -1,3 +1,7 @@
+/**
+ * File: MainActivity.java
+ * @author Cara Steinberg
+ */
 package edu.rit.wic.stressmonitor;
 
 
@@ -49,6 +53,9 @@ import edu.rit.wic.stressmonitor.bluefruit.BluefruitService;
 import edu.rit.wic.stressmonitor.bluefruit.BluefruitUtils;
 
 
+/**
+ * Activity displays heart rate readings and connects the Adafruit device via bluetooth.
+ */
 public class MainActivity extends AppCompatActivity {
     TextView textView;
     ImageView imageView;

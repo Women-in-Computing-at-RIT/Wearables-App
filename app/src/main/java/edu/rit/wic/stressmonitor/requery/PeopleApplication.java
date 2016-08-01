@@ -1,3 +1,7 @@
+/**
+ * File: PeopleApplication.java
+ * @author Cara Steinberg
+ */
 package edu.rit.wic.stressmonitor.requery;
 
 import android.app.Application;
@@ -12,6 +16,10 @@ import io.requery.sql.Configuration;
 import io.requery.sql.EntityDataStore;
 import io.requery.sql.TableCreationMode;
 
+
+/**
+ * Class that creates the database for the application.
+ */
 public class PeopleApplication extends Application {
 
     private SingleEntityStore<Persistable> dataStore;

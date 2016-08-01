@@ -1,3 +1,7 @@
+/**
+ * File: LoginActivity.java
+ * @author Cara Steinberg
+ */
 package edu.rit.wic.stressmonitor;
 
 import android.app.ProgressDialog;
@@ -18,6 +22,9 @@ import io.requery.Persistable;
 import io.requery.rx.SingleEntityStore;
 
 
+/**
+ * Activity logs the user in and redirects to the main activity.
+ */
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_REGISTER = 0;

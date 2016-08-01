@@ -1,3 +1,7 @@
+/**
+ * File: ContactActivity.java
+ * @authors Matthew Crocco, Cara Steinberg
+ */
 package edu.rit.wic.stressmonitor;
 
 import android.app.Activity;
@@ -40,7 +44,7 @@ import edu.rit.wic.stressmonitor.bluefruit.BluefruitService;
 import edu.rit.wic.stressmonitor.bluefruit.BluefruitUtils;
 
 /**
- * Created by Matthew on 5/6/2016.
+ * Displays the heart rate statistics with a line graph.
  */
 public class TelemetryActivity extends AppCompatActivity {
     Toolbar toolbar;

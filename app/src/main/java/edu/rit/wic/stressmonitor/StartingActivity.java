@@ -1,3 +1,7 @@
+/**
+ * File: StartingActivity.java
+ * @author Cara Steinberg
+ */
 package edu.rit.wic.stressmonitor;
 
 import android.content.Intent;
@@ -11,6 +15,10 @@ import android.widget.Button;
 
 import com.orhanobut.logger.Logger;
 
+
+/**
+ * Activity is the first displayed, then users can either login or register.
+ */
 public class StartingActivity extends AppCompatActivity {
     Button loginBtn;
     Button registerBtn;

@@ -1,3 +1,7 @@
+/**
+ * File: ProfileActivity.java
+ * @author Cara Steinberg
+ */
 package edu.rit.wic.stressmonitor;
 
 import android.content.Intent;
@@ -17,6 +21,10 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
+
+/**
+ * Activity displays users' profile information.
+ */
 public class ProfileActivity extends AppCompatActivity {
     Toolbar toolbar;
     ActionBar actionBar;

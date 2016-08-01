@@ -1,3 +1,7 @@
+/**
+ * File: ForgotPasswordActivity.java
+ * @author Cara Steinberg
+ */
 package edu.rit.wic.stressmonitor;
 
 import android.os.Bundle;
@@ -15,6 +19,10 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+
+/**
+ * Activity sends email to reset password if user has forgotten their password.
+ */
 public class ForgotPasswordActivity extends AppCompatActivity {
     private static final String TAG = "ForgotPasswordActivity";
     private static final int REQUEST_REGISTER = 0;
