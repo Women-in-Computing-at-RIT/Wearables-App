@@ -16,9 +16,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.annimon.stream.Optional;
+
 import butterknife.ButterKnife;
 import butterknife.BindView;
+import edu.rit.wic.stressmonitor.requery.PeopleApplication;
+import edu.rit.wic.stressmonitor.requery.model.PersonEntity;
 import io.requery.Persistable;
+import io.requery.query.Result;
+import io.requery.query.Tuple;
 import io.requery.rx.SingleEntityStore;
 
 
@@ -31,6 +37,8 @@ public class LoginActivity extends AppCompatActivity {
     private static final int REQUEST_FORGOT = 0;
 
     private SingleEntityStore<Persistable> data;
+    String emailInput;
+    String password;
 
     @BindView(R.id.input_email) EditText _emailText;
     @BindView(R.id.input_password) EditText _passwordText;
@@ -43,6 +51,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+
+        data = ((PeopleApplication) getApplication()).getData();
 
         // Find the toolbar view inside the activity layout
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -77,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
     public void login() {
         Log.d(TAG, "Login");
 
-        if (!validateFields()) {
+        if (!validateFields() || !validateUser()) {
             onLoginFailed();
             return;
         }
@@ -124,10 +134,10 @@ public class LoginActivity extends AppCompatActivity {
 
     public boolean validateFields() {
         boolean valid = true;
-        String email = _emailText.getText().toString();
-        String password = _passwordText.getText().toString();
+        emailInput = _emailText.getText().toString();
+        password = _passwordText.getText().toString();
 
-        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        if (emailInput.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) {
             _emailText.setError("Enter a valid email address");
             valid = false;
         } else {
@@ -141,6 +151,26 @@ public class LoginActivity extends AppCompatActivity {
             _passwordText.setError(null);
         }
 
+        return valid;
+    }
+
+    public boolean validateUser() {
+        boolean valid = true;
+        emailInput = _emailText.getText().toString();
+        password = _passwordText.getText().toString();
+
+        Result<Tuple> emailResult = data.select(PersonEntity.EMAIL)
+                .where(PersonEntity.EMAIL.eq(emailInput)).get();
+        Result<Tuple> passwordResult = data.select(PersonEntity.PASSWORD)
+                .where(PersonEntity.PASSWORD.eq(password)).get();
+
+        if (emailResult == null || !emailInput.equals(emailResult.toString())) {
+            valid = false;
+        }
+
+        if (passwordResult == null || !password.equals(passwordResult.toString())) {
+            valid = false;
+        }
         return valid;
     }
 }

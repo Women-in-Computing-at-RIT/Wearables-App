@@ -73,20 +73,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         data = ((PeopleApplication) getApplication()).getData();
 
-//        int personId = getIntent().getIntExtra(EXTRA_PERSON_ID, -1);
-//        if (personId == -1) {
-//            person = new PersonEntity(); // creating a new person
-//        } else {
-//            data.findByKey(PersonEntity.class, personId)
-//            .subscribeOn(AndroidSchedulers.mainThread())
-//            .subscribe(new Action1<PersonEntity>() {
-//                @Override
-//                public void call(PersonEntity person) {
-//                    RegisterActivity.this.person = person;
-//                }
-//            });
-//        }
-
         // Find the toolbar view inside the activity layout
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         // Sets the Toolbar to act as the ActionBar for this Activity window.
@@ -246,7 +232,13 @@ public class RegisterActivity extends AppCompatActivity {
         person.setLastName(lastName);
         person.setEmail(emailInput);
         person.setPassword(password);
-        data.insert(person);
+        data.insert(person).subscribe(new Action1<Person>() {
+            @Override
+            public void call(Person person) {
+                finish();
+            }
+        });
+//        data.insert(person);
     }
 ////        // save the person
 //        if (person.getId() == 0) {
