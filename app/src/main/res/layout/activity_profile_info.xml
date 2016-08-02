@@ -40,6 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:inputType="textPersonName"
+                android:text="@{person.firstName}"
                 android:hint="@string/first_name_label" />
 
             <EditText android:id="@+id/input_last_name"
@@ -47,6 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:inputType="textPersonName"
+                android:text="@{person.lastName}"
                 android:hint="@string/last_name_label" />
 
             <EditText android:id="@+id/input_birthday"
