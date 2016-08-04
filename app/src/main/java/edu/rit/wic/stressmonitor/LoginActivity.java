@@ -159,18 +159,24 @@ public class LoginActivity extends AppCompatActivity {
         emailInput = _emailText.getText().toString();
         password = _passwordText.getText().toString();
 
-        Result<Tuple> emailResult = data.select(PersonEntity.EMAIL)
-                .where(PersonEntity.EMAIL.eq(emailInput)).get();
-        Result<Tuple> passwordResult = data.select(PersonEntity.PASSWORD)
-                .where(PersonEntity.PASSWORD.eq(password)).get();
+//        Result<Tuple> emailResult = data.select(PersonEntity.EMAIL)
+//                .where(PersonEntity.EMAIL.eq(emailInput)).get();
+//        Result<Tuple> passwordResult = data.select(PersonEntity.PASSWORD)
+//                .where(PersonEntity.PASSWORD.eq(password)).get();
 
-        if (emailResult == null || !emailInput.equals(emailResult.toString())) {
-            valid = false;
-        }
+        Result<PersonEntity> person = data.select(PersonEntity.class)
+                                    .where(PersonEntity.EMAIL.eq(emailInput)
+                                    .and(PersonEntity.PASSWORD.eq(password)).limit(1).get());
 
-        if (passwordResult == null || !password.equals(passwordResult.toString())) {
-            valid = false;
-        }
+        Optional<PersonEntity> userOption = Optional.of(person.firstOrNull());
+
+//        if (emailResult == null || !emailInput.equals(emailResult.toString())) {
+//            valid = false;
+//        }
+//
+//        if (passwordResult == null || !password.equals(passwordResult.toString())) {
+//            valid = false;
+//        }
         return valid;
     }
 }
