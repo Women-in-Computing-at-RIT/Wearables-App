@@ -164,11 +164,11 @@ public class LoginActivity extends AppCompatActivity {
 //        Result<Tuple> passwordResult = data.select(PersonEntity.PASSWORD)
 //                .where(PersonEntity.PASSWORD.eq(password)).get();
 
-        Result<PersonEntity> person = data.select(PersonEntity.class)
-                                    .where(PersonEntity.EMAIL.eq(emailInput)
-                                    .and(PersonEntity.PASSWORD.eq(password)).limit(1).get());
-
-        Optional<PersonEntity> userOption = Optional.of(person.firstOrNull());
+//        Result<PersonEntity> person = data.select(PersonEntity.class)
+//                                    .where(PersonEntity.EMAIL.eq(emailInput)
+//                                    .and(PersonEntity.PASSWORD.eq(password)).limit(1).get());
+//
+//        Optional<PersonEntity> userOption = Optional.of(person.firstOrNull());
 
 //        if (emailResult == null || !emailInput.equals(emailResult.toString())) {
 //            valid = false;
