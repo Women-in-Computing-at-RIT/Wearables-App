@@ -196,12 +196,12 @@ public class MainActivity extends AppCompatActivity {
                 imageView.setImageResource(R.drawable.bt_disconnected_gray);
             }
 
-            textView = (TextView) findViewById(R.id.link_devices);
-            if (connected) {
-                textView.setText(R.string.device_connected);
-            } else {
-                textView.setText(R.string.device_disconnected);
-            }
+//            textView = (TextView) findViewById(R.id.link_devices);
+//            if (connected) {
+//                textView.setText(R.string.device_connected);
+//            } else {
+//                textView.setText(R.string.device_disconnected);
+//            }
 
         }
     };
@@ -491,6 +491,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onPostResume() {
+        textView = (TextView) findViewById(R.id.link_devices);
+        textView.setText(R.string.device_connected);
         textView.setOnClickListener(
                 (v) -> startActivity(new Intent(MainActivity.this, BluefruitScanActivity.class))
         );

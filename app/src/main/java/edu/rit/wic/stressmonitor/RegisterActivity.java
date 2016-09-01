@@ -71,7 +71,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
 
-        data = ((PeopleApplication) getApplication()).getData();
+//        data = ((PeopleApplication) getApplication()).getData();
 
         // Find the toolbar view inside the activity layout
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -102,7 +102,7 @@ public class RegisterActivity extends AppCompatActivity {
     public void register() {
         Log.d(TAG, "Register");
 
-        if (!validateFields() || !validateUser()) {
+        if (!validateFields()) {
             onRegisterFailed();
             return;
         }
@@ -137,7 +137,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void onRegisterSuccess() {
-        createUser();
+//        createUser();
         _registerButton.setEnabled(true);
         setResult(RESULT_OK, null);
         Intent intent = new Intent(this, ProfileInformationActivity.class);
