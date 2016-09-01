@@ -62,6 +62,8 @@ public class StartingActivity extends AppCompatActivity {
 
     @Override
     protected void onPostResume() {
+        Logger.d("Login Button: ", String.valueOf(loginBtn));
+        Logger.d("Register Button: ", String.valueOf(registerBtn));
         loginBtn.setOnClickListener(
                 (v) -> startActivity(new Intent(StartingActivity.this, LoginActivity.class))
         );

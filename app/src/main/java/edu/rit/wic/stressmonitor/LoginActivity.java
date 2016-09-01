@@ -87,7 +87,8 @@ public class LoginActivity extends AppCompatActivity {
     public void login() {
         Log.d(TAG, "Login");
 
-        if (!validateFields() || !validateUser()) {
+//        if (!validateFields() || !validateUser()) {
+        if (!validateFields()) {
             onLoginFailed();
             return;
         }
